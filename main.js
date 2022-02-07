@@ -22,17 +22,12 @@ function game () {
             numberBox = 49;
             break;
     }
-
-    gridGenerator(numberBox);
-        
-    
+            
 
     //creo un riferimento alla griglia per generare i box all'interno
     let gridBox = document.getElementById("grid-container");
     //resetto il campo da gioco 
     gridBox.innerHTML = "";
-
-    function gridGenerator(numberBox) {
 
         order = Math.sqrt(numberBox);
 
@@ -60,39 +55,6 @@ function game () {
     }
 
     function notCellClick() {
-        square.classList.add("colorSafe");
-        square.removeEventListener("click", notCellClick);
+        this.classList.add("colorSafe");
+        this.removeEventListener("click", notCellClick);
     }
-
-    
-        
-        
-
-        
-}
-
-    
-//creo una funzione per creare 16 celle di bombe
-function bombGenerator (bombNumber, numberBox) {
-    const bombsGenerated = [];
-    while (bombsGenerated.length < bombNumber) {
-        const bomb = getRandomNumber(1, numberBox);
-
-        if (!bombsGenerated.includes(bomb)) {
-            bombsGenerated.push(bomb);
-        }
-    }
-    return bombsGenerated;
-
-}
-
-
-
-
-
-
-
-//funzione che crea numeri casuali
-function getRandomNumber(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
